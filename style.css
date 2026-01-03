@@ -1,29 +1,126 @@
-body {
-  margin: 0;
-  background: #0b0b0b;
-  color: white;
-  font-family: Arial, sans-serif;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ===== reset ===== */
+* {
+  box-sizing: border-box;
 }
 
-.box {
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color: #fff;
+  background: #0b0b0b;
+  overflow-x: hidden;
+}
+
+/* ===== animated background ===== */
+.bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(600px 400px at 20% 20%, #1a1a1a, transparent 60%),
+    radial-gradient(600px 400px at 80% 80%, #141414, transparent 60%);
+  animation: bgMove 20s linear infinite alternate;
+  z-index: -1;
+}
+
+@keyframes bgMove {
+  from { transform: scale(1); }
+  to   { transform: scale(1.15); }
+}
+
+/* ===== hero ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  font-size: 48px;
+  letter-spacing: 1px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.tagline {
+  margin-top: 10px;
+  opacity: 0.7;
+  animation: fadeUp 1.4s ease forwards;
+}
+
+.download-btn {
+  margin-top: 40px;
+  padding: 16px 36px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #f4f4f4, #cfcfcf);
+  color: #0b0b0b;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  transition: transform .2s, box-shadow .2s;
+  animation: fadeUp 1.8s ease forwards;
+}
+
+.download-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,.5);
+}
+
+/* ===== screenshots ===== */
+.screens {
+  padding: 80px 20px;
   text-align: center;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 28px;
-  background: #1f1f1f;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  font-size: 18px;
+.screens h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
 }
 
-.btn:hover {
-  background: #333;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.gallery img:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 30px 80px rgba(0,0,0,.8);
+}
+
+/* ===== footer ===== */
+footer {
+  padding: 30px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+/* ===== animations ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== mobile ===== */
+@media (max-width: 480px) {
+  .logo { font-size: 36px; }
 }
